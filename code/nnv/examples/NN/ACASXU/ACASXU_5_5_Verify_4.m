@@ -23,7 +23,7 @@ acas_path = [nnvroot(), filesep, 'vnncomp2024_benchmarks', filesep, 'benchmarks'
 networks = dir(fullfile(acas_path, "onnx", "ACASXU_run2a_5_5_batch_2000.onnx"));
 
 % property to verify
-vnnlib_file = fullfile(acas_path, "vnnlib", "prop_2.vnnlib");
+vnnlib_file = fullfile(acas_path, "vnnlib", "prop_4.vnnlib");
 
 % Define reachability parameters
 reachOptions = struct;
