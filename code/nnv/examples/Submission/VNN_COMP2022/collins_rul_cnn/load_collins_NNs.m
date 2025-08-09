@@ -1,19 +1,18 @@
 function [networks, names2idxs] = load_collins_NNs()
 %% 1) Load networks (collins benchmarks)
-% vnnFolder = "/home/manzand/Documents/MATLAB/vnncomp2022_benchmarks/benchmarks/";
-vnnFolder = "/home/dieman95/Documents/MATLAB/vnncomp2022_benchmarks/benchmarks/";
-benchmarkFolder = "collins_rul_cnn/onnx/";
+vnnFolder = "../../../../../../vnncomp2024_benchmarks/benchmarks/";
+benchmarkFolder = "collins_rul_cnn_2023/onnx/";
 listNN = dir(vnnFolder+benchmarkFolder);
 networks = {}; % create a cell array of neural networks
-names = [];
-idxs = [];
+names = {};    % ← CHANGE: Initialize as cell array
+idxs = [];     % ← Keep as numeric array
 count = 1;
 t = tic;
-for h = 1:length(listNN) % generlize NN loading options for all benchmarks
+for h = 1:length(listNN)
     if endsWith(listNN(h).name, ".onnx")
         networks{count} = onnx2nnv(vnnFolder+benchmarkFolder+string(listNN(h).name));
         names{count} = listNN(h).name;
-        idxs{count} = count;
+        idxs(count) = count;  % ← CHANGE: Use numeric indexing
         count = count + 1;
     end
 end
